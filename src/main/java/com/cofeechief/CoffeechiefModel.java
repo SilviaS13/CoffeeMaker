@@ -10,9 +10,8 @@ public class CoffeechiefModel {
     private int chocolateQuantity;
     private int sugarQuantity;
 
-    CoffeechiefModel(){};
 
-    CoffeechiefModel(String coffeeName, int espressoQuantity, int waterQuantity, int milkQuantity, int chocolateQuantity, int sugarQuantity){
+        CoffeechiefModel(String coffeeName, int espressoQuantity, int waterQuantity, int milkQuantity, int chocolateQuantity, int sugarQuantity){
         this.coffeeName = coffeeName;
         this.espressoQuantity = espressoQuantity;
         this.waterQuantity = waterQuantity;
@@ -20,6 +19,8 @@ public class CoffeechiefModel {
         this.sugarQuantity = sugarQuantity;
         this.chocolateQuantity = chocolateQuantity;
     }
+
+    //region Getters
 
     public String getCoffeeName() {
         return coffeeName;
@@ -44,5 +45,7 @@ public class CoffeechiefModel {
     public int getSugarQuantity() {
         return sugarQuantity;
     }
+
+    //endregion
 
 }

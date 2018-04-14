@@ -1,6 +1,5 @@
 package com.cofeechief;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,18 +10,16 @@ import java.util.HashMap;
 @RestController
 public class CoffeechiefController {
 
-    @Autowired
-    private CoffeechiefService coffeservice;
 
-    @GetMapping("/")
+    @GetMapping("/api/coffee")
     public String home(){
-        return "<a href=\"/api/coffees\">/api/coffees</a>" +
+        return "<a href=\"/api/coffee/coffees\">/api/coffee/coffees</a>" +
                 "<br/>" +
-                "<a href=\"/api/coffees/1\">/api/coffees/{id}</a>";
+                "<a href=\"/api/coffee/coffees/1\">/api/coffee/coffees/{id}</a>";
 
     }
 
-    @GetMapping("/api/coffees")
+    @GetMapping("/api/coffee/coffees")
     public ArrayList<CoffeechiefModel> getCoffees(){
 
         HashMap<Integer, CoffeechiefModel>  coffeeList = CoffeechiefService.coffeelist();
@@ -31,7 +28,7 @@ public class CoffeechiefController {
 
     }
 
-    @GetMapping("/api/coffees/{coffeeid}")
+    @GetMapping("/api/coffee/coffees/{coffeeid}")
     public String getCoffee(@PathVariable Integer coffeeid){
 
         CoffeechiefModel coff = CoffeechiefService.getCoffee(coffeeid);
