@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CoffeeCheckerController {
 
-    //@Autowired
     CoffeeCheckerModel checker;
 
     @GetMapping("/api/checking")
@@ -27,7 +26,7 @@ public class CoffeeCheckerController {
         checker = CoffeeCheckerModel.getInstance();
 
         return  "Products avaliable: " + "<br/>" +
-                "The cup is on coffee machine: " + checker.getIsCupIsOnMachine() + "<br/>" +
+                "The cup is on coffee machine: " + checker.getCupIsOnMachine() + "<br/>" +
                 "Coffee = " + checker.getCoffeeAvaliable() +"<br/>" +
                 "Water = " + checker.getWaterAvaliable() + "<br/>" +
                 "Milk = " + checker.getMilkAvaliable() + "<br/>" +
@@ -50,7 +49,7 @@ public class CoffeeCheckerController {
             case ("milk"): return checker.getMilkAvaliable();
             case ("sugar"): return checker.getSugarAvaliable();
             case ("chocolate"): return checker.getChocolateAvaliable();
-            case ("cup"): return checker.getIsCupIsOnMachine() == true ? 1 : 0;
+            case ("cup"): return checker.getCupIsOnMachine() == true ? 1 : 0;
         }
         return 0;
     }

@@ -1,4 +1,4 @@
-package com.cofeechief;
+package com.cofeeChief;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +13,7 @@ public class CoffeechiefController {
 
     @GetMapping("/api/coffee")
     public String home(){
-        return "<a href=\"/api/coffee/coffees\">/api/coffee/coffees</a>" +
-                "<br/>" +
+        return "<a href=\"/api/coffee/coffees\">/api/coffee/coffees</a>" + "<br/>" +
                 "<a href=\"/api/coffee/coffees/1\">/api/coffee/coffees/{id}</a>";
 
     }

@@ -1,4 +1,4 @@
-package com.cofeechief;
+package com.cofeeChief;
 
 import org.springframework.stereotype.Service;
 

@@ -11,6 +11,8 @@ public class CoffeeCheckerModel {
     private int sugarAvaliable;
     private boolean cupIsOnMachine;
 
+    private boolean cupReleased;
+
 
     private CoffeeCheckerModel(){};
 
@@ -52,8 +54,12 @@ public class CoffeeCheckerModel {
         return sugarAvaliable;
     }
 
-    public boolean getIsCupIsOnMachine() {
+    public boolean getCupIsOnMachine() {
         return cupIsOnMachine;
+    }
+
+    public boolean isCupReleased() {
+        return cupReleased;
     }
 
     //endregion
