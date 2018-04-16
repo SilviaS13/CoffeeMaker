@@ -1,14 +1,16 @@
-package com.cofeeChief;
+package com.coffeeChief;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 
 @RestController
 public class CoffeechiefController {
+
+    @Autowired
+    private CoffeechiefService service;
 
 
     @GetMapping("/api/coffee")
@@ -19,23 +21,32 @@ public class CoffeechiefController {
     }
 
     @GetMapping("/api/coffee/coffees")
-    public ArrayList<CoffeechiefModel> getCoffees(){
+    public HashMap<Integer, CoffeechiefModel> getCoffees(){
 
         HashMap<Integer, CoffeechiefModel>  coffeeList = CoffeechiefService.coffeelist();
-        ArrayList<CoffeechiefModel> mod = new ArrayList<CoffeechiefModel>(coffeeList.values());
-        return mod;
+        return coffeeList;
 
     }
 
     @GetMapping("/api/coffee/coffees/{coffeeid}")
     public String getCoffee(@PathVariable Integer coffeeid){
-
-        CoffeechiefModel coff = CoffeechiefService.getCoffee(coffeeid);
+        CoffeechiefModel coff = service.getCoffee(coffeeid);
 
         String mess = "Name = " + coff.getCoffeeName() + "; Espresso (g) = " + coff.getEspressoQuantity() +
                 "; Water = " + coff.getWaterQuantity() + "; Milk = " + coff.getMilkQuantity() + "; Chocolate = "+
                 coff.getChocolateQuantity() + "; Sugar = " + coff.getSugarQuantity();
 
         return mess;
+    }
+
+    @PostMapping(path = "/api/coffee/coffees")
+    public int createCoffee(@RequestBody CoffeechiefModel coffeeModel){
+        return service.createCoffee(coffeeModel);
+    }
+
+    @PostMapping(path = "/api/coffee/coffees/rm")
+    public String removeCoffee(@RequestBody Integer id){
+        service.removeCoffee(id);
+         return "Successful";
     }
 }

@@ -10,6 +10,8 @@ public class CoffeeManagerModel {
     private String coffeeName;
     private byte week;
 
+    public CoffeeManagerModel(){};
+
     CoffeeManagerModel(String time, boolean isOneTimeCoffee, String coffeeName, byte week){
         this.time = LocalTime.parse(time);
         this.isOneTimeCoffee = isOneTimeCoffee;

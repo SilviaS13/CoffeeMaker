@@ -1,4 +1,4 @@
-package com.cofeeChief;
+package com.coffeeChief;
 
 
 import org.springframework.boot.SpringApplication;

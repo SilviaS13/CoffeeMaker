@@ -1,16 +1,11 @@
 package com.coffeeManager;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 @RestController
 public class CoffeeManagerController {
-
-
 
     @GetMapping("/api/manager")
     public String home(){
@@ -20,11 +15,8 @@ public class CoffeeManagerController {
     }
 
     @GetMapping("/api/manager/coffeetasks")
-    public ArrayList<CoffeeManagerModel> getComponents(){
-
-        HashMap<Integer, CoffeeManagerModel> coffeeList = CoffeeManagerService.coffeeTimeList();
-        ArrayList<CoffeeManagerModel> mod = new ArrayList<CoffeeManagerModel>(coffeeList.values());
-        return mod;
+    public HashMap<Integer, CoffeeManagerModel> getComponents(){
+        return CoffeeManagerService.coffeeTimeList();
     }
 
     @GetMapping("/api/manager/coffeetasks/{id}")
@@ -37,4 +29,16 @@ public class CoffeeManagerController {
                 "Coffee Name: " + manager.getCoffeeName() +"<br/>" +
                 "Coffee Week: " + CoffeeManagerService.WeekByteToStr(manager.getWeek());
     }
+
+    @PostMapping(path = "/api/manager/coffeetasks")
+    public int createCoffee(@RequestBody CoffeeManagerModel coffeeTime){
+        return CoffeeManagerService.createCoffeeTime(coffeeTime);
+    }
+
+    @PostMapping(path = "/api/manager/coffeetasks/rm")
+    public String removeCoffee(@RequestBody Integer id){
+        CoffeeManagerService.removeCoffeeTime(id);
+        return "Successful";
+    }
+
 }

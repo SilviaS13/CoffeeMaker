@@ -49,14 +49,14 @@ public class CoffeeManagerService {
        return null;
     }
 
-    public static byte WeekStrToByte(String myweek){
-        byte byteWeek = 0;
-        for (int i = 0; i<week.length; i++){
-            if (myweek.contains(week[i]))
-                byteWeek |= 1<<i;
-        }
-        return byteWeek;
-    }
+//    public static byte WeekStrToByte(String myweek){
+//        byte byteWeek = 0;
+//        for (int i = 0; i<week.length; i++){
+//            if (myweek.contains(week[i]))
+//                byteWeek |= 1<<i;
+//        }
+//        return byteWeek;
+//    }
 
     public static String WeekByteToStr(byte myweek){
         String strWeek = " ";
@@ -70,5 +70,10 @@ public class CoffeeManagerService {
             strWeek = "Today";
 
         return strWeek;
+    }
+
+    public static int createCoffeeTime(CoffeeManagerModel coffee){
+        coffeeTime.put(id++, coffee);
+        return id - 1;
     }
 }

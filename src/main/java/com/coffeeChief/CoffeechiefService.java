@@ -1,4 +1,4 @@
-package com.cofeeChief;
+package com.coffeeChief;
 
 import org.springframework.stereotype.Service;
 
@@ -9,8 +9,10 @@ import java.util.Iterator;
 public class CoffeechiefService {
     private static HashMap< Integer, CoffeechiefModel> coffees = new HashMap<Integer, CoffeechiefModel>();
     private static Integer id = 4;
+    //private static List<CoffeechiefModel> coffees = new ArrayList<CoffeechiefModel>();
 
     static {
+        //coffees.add(id, new CoffeechiefModel("Cappucino", 30, 60, 30, 0, 10 ));
         coffees.put(0, new CoffeechiefModel("Cappucino", 30, 60, 30, 0, 10 ));
         coffees.put(1, new CoffeechiefModel("Americano", 30, 100, 0,0,  0 ));
         coffees.put(2, new CoffeechiefModel("Mocco",40, 30, 30,20,  0 ));
@@ -19,9 +21,9 @@ public class CoffeechiefService {
 
 
 
-    public static void addCoffee(String coffeeName, int espressoQuantity, int waterQuantity, int milkQuantity, int chocolateQuantity, int sugarQuantity){
+    public static void addCoffee( String coffeeName, int espressoQuantity, int waterQuantity, int milkQuantity, int chocolateQuantity, int sugarQuantity){
 
-        coffees.put(id++, new CoffeechiefModel(coffeeName, espressoQuantity, waterQuantity,  milkQuantity, chocolateQuantity, sugarQuantity));
+        coffees.put(id++, new CoffeechiefModel( coffeeName, espressoQuantity, waterQuantity,  milkQuantity, chocolateQuantity, sugarQuantity));
     }
 
     public static HashMap< Integer, CoffeechiefModel> coffeelist(){
@@ -43,5 +45,10 @@ public class CoffeechiefService {
                 return coffees.get(id);
         }
        return null;
+    }
+
+    public static int createCoffee(CoffeechiefModel coffee){
+        coffees.put(id++, coffee);
+        return id - 1;
     }
 }

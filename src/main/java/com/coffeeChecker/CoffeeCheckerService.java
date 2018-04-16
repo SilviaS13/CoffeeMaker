@@ -16,27 +16,15 @@ public class CoffeeCheckerService {
         checker.setWaterAvaliable(500);
     }
 
-
-//
-//    public static void addCoffee(String coffeeName, int espressoAvaliable, int waterAvaliable, int milkAvaliable, int chocolateAvaliable, int sugarAvaliable){
-//
-//        coffees.put(id++, new CoffeeCheckerModel(coffeeName, espressoAvaliable, waterAvaliable,  milkAvaliable, chocolateAvaliable, sugarAvaliable));
-//    }
-
-//    public static void removeCoffee(Integer id){
-//        Iterator iter = coffees.keySet().iterator();
-//        while (iter.hasNext()){
-//            if(iter.next() == id)
-//                coffees.remove(id);
+//    public void updateCheckerVals(int[] vals){
+//        checker = CoffeeCheckerModel.getInstance();
+//        if (vals.length == 6) {
+//            checker.setCoffeeAvaliable(checker.getCoffeeAvaliable() + vals[0]);
+//            checker.setWaterAvaliable(checker.getWaterAvaliable() + vals[1]);
+//            checker.setMilkAvaliable(checker.getMilkAvaliable() + vals[2]);
+//            checker.setChocolateAvaliable(checker.getChocolateAvaliable() + vals[3]);
+//            checker.setSugarAvaliable(checker.getSugarAvaliable() + vals[4]);
+//            checker.setCupIsІsOnMachine(vals[5] == 1 ? true : false);
 //        }
-//    }
-//
-//    public static CoffeeCheckerModel getCoffee(Integer id){
-//        Iterator iter = coffees.keySet().iterator();
-//        while (iter.hasNext()){
-//            if(iter.next() == id)
-//                return coffees.get(id);
-//        }
-//       return null;
 //    }
 }

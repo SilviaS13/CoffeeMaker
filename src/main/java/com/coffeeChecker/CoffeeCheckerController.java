@@ -1,13 +1,12 @@
 package com.coffeeChecker;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CoffeeCheckerController {
 
     CoffeeCheckerModel checker;
+    CoffeeCheckerService checkerService;
 
     @GetMapping("/api/checking")
     public String home(){
@@ -53,4 +52,20 @@ public class CoffeeCheckerController {
         }
         return 0;
     }
+
+    @PostMapping(path = "/api/checking/update")
+    public String createCoffee(@RequestBody int[] vals){
+        checker = CoffeeCheckerModel.getInstance();
+        if (vals.length == 6) {
+            checker.setCoffeeAvaliable(checker.getCoffeeAvaliable() + vals[0]);
+            checker.setWaterAvaliable(checker.getWaterAvaliable() + vals[1]);
+            checker.setMilkAvaliable(checker.getMilkAvaliable() + vals[2]);
+            checker.setChocolateAvaliable(checker.getChocolateAvaliable() + vals[3]);
+            checker.setSugarAvaliable(checker.getSugarAvaliable() + vals[4]);
+            checker.setCupIsІsOnMachine(vals[5] == 1 ? true : false);
+        }
+        //checkerService.updateCheckerVals(arr);
+        return "Successfuly";
+    }
+
 }
